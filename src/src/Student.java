@@ -37,4 +37,31 @@ public class Student {
 
         this.grade = grade;
     }
+
+    public String isPassed() {
+        if (this.grade >= 60) {
+            return "Passed";
+        }
+        return "Failed";
+    }
+
+    public String hisGrade() {
+        if (this.grade >= 90) {
+            return "Excellent";
+        } else if (this.grade >= 80) {
+            return "Very Good";
+        } else if (this.grade >= 70) {
+            return "Good";
+        } else if (this.grade >= 60) {
+            return "Pass";
+        } else {
+            return "Fail";
+        }
+    }
+
+    public void show() {
+        System.out.println("The student name: " + this.name + "\nNational ID: " + this.nationalId + "\nAge: " + this.age
+                + "\nGrade: " + this.grade + "\nHis status: " + this.isPassed() + "\nHis grade in writing: "
+                + this.hisGrade());
+    }
 }

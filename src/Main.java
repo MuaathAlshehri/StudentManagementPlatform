@@ -39,6 +39,10 @@ public class Main {
                 }
                 break;
 
+            case 2:
+                showAllStudents(students);
+                break;
+
             default:
                 System.out.println("You didn't choose correct choice , try again");
             }
@@ -86,6 +90,18 @@ public class Main {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+
+    public static void showAllStudents(ArrayList<Student> students) {
+
+        if (students.size() == 0) {
+            System.out.println("\nNo students found!");
+        } else {
+            students.forEach(student -> {
+                student.show();
+                System.out.println("\n");
+            });
         }
     }
 
