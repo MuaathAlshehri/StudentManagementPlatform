@@ -38,6 +38,10 @@ public class Student {
         this.grade = grade;
     }
 
+    public String getNationalId() {
+        return nationalId;
+    }
+
     public String isPassed() {
         if (this.grade >= 60) {
             return "Passed";

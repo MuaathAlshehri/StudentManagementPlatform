@@ -43,6 +43,11 @@ public class Main {
                 showAllStudents(students);
                 break;
 
+            case 3:
+                String nationalID = getInput(GET_ID_MESSAGE);
+                search(students, nationalID);
+                break;
+
             default:
                 System.out.println("You didn't choose correct choice , try again");
             }
@@ -102,6 +107,21 @@ public class Main {
                 student.show();
                 System.out.println("\n");
             });
+        }
+    }
+
+    public static void search(ArrayList<Student> students, String nationalID) {
+        if (checker(nationalID)) {
+
+            for (Student student : students) {
+                if (student.getNationalId().equals(nationalID)) {
+                    student.show();
+                    break;
+                }
+            }
+
+        } else {
+            System.out.println("\nStudent Not found");
         }
     }
 
