@@ -1,4 +1,6 @@
 package com.studentmanagmentplatform.controller;
+
+import com.studentmanagmentplatform.service.Input;
 import java.util.ArrayList;
 
 import java.util.HashSet;
@@ -43,7 +45,7 @@ public class Main {
                 Student student = addStudent();
                 
                 
-                studentService.addStudent(student , students);
+                studentService.addStudent(students);
                 
                 
                 if (student != null) {
@@ -56,17 +58,17 @@ public class Main {
                 break;
 
             case 3:
-                String nationalID = getInput(Message.GET_ID_MESSAGE);
+                String nationalID = Input.getInput(Message.GET_ID_MESSAGE);
                 search(students, nationalID);
                 break;
 
             case 4:
-                String nationalId = getInput(Message.GET_ID_MESSAGE);
+                String nationalId = Input.getInput(Message.GET_ID_MESSAGE);
                 update(students, nationalId);
                 break;
 
             case 5:
-                String nationalid = getInput(Message.GET_ID_MESSAGE);
+                String nationalid = Input.getInput(Message.GET_ID_MESSAGE);
                 delete(students, nationalid);
                 break;
 
@@ -91,10 +93,7 @@ public class Main {
 
     public static Student addStudent() {
     	
-    	
-    	
-
-        String nationalID = getInput(Message.GET_ID_MESSAGE);
+        String nationalID = Input.getInput(Message.GET_ID_MESSAGE);
 
         try {
             if (checker(nationalID)) {
@@ -105,11 +104,11 @@ public class Main {
             return null;
         }
 
-        String name = getInput(Message.GET_NAME_MESSAGE);
+        String name = Input.getInput(Message.GET_NAME_MESSAGE);
 
-        int age = inputAge();
+        int age = Input.readAge();
 
-        double grade = inputGrade();
+        double grade = Input.readGrade();
 
         try {
 
@@ -122,6 +121,8 @@ public class Main {
             return null;
         }
     }
+    
+    
 
     public static void showAllStudents(ArrayList<Student> students) {
 
@@ -134,6 +135,8 @@ public class Main {
             });
         }
     }
+    
+    
 
     public static void search(ArrayList<Student> students, String nationalID) {
         if (checker(nationalID)) {
@@ -149,6 +152,8 @@ public class Main {
             System.out.println("\nStudent Not found");
         }
     }
+    
+    
 
     public static void update(ArrayList<Student> students, String nationalID) {
 
@@ -158,11 +163,11 @@ public class Main {
 
                 if (student.getNationalId().equals(nationalID)) {
 
-                    String name = getInput(Message.GET_NAME_MESSAGE);
+                    String name = Input.getInput(Message.GET_NAME_MESSAGE);
 
-                    int age = inputAge();
+                    int age = Input.readAge();
 
-                    double grade = inputGrade();
+                    double grade = Input.readGrade();
 
                     try {
                         student.setName(name);
@@ -181,6 +186,8 @@ public class Main {
             System.out.println("\nStudent Not found");
         }
     }
+    
+    
 
     public static void delete(ArrayList<Student> students, String nationalID) {
 
@@ -205,24 +212,6 @@ public class Main {
         return false;
     }
 
-    public static int inputAge() {
-        System.out.println("Enter the student age: ");
-        int age = in.nextInt();
+    
 
-        return age;
-    }
-
-    public static double inputGrade() {
-        System.out.println("Enter the student grade: ");
-        double grade = in.nextDouble();
-
-        return grade;
-    }
-
-    public static String getInput(String message) {
-        System.out.println(message);
-        String name = in.nextLine();
-
-        return name;
-    }
 }
