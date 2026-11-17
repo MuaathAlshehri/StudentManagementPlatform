@@ -53,6 +53,11 @@ public class Main {
                 update(students, nationalId);
                 break;
 
+            case 5:
+                String nationalid = getInput(GET_ID_MESSAGE);
+                delete(students, nationalid);
+                break;
+
             default:
                 System.out.println("You didn't choose correct choice , try again");
             }
@@ -159,6 +164,22 @@ public class Main {
             }
         } else {
             System.out.println("\nStudent Not found");
+        }
+    }
+
+    public static void delete(ArrayList<Student> students, String nationalID) {
+
+        if (checker(nationalID)) {
+
+            nationalIDs.remove(nationalID);
+
+            boolean removed = students.removeIf(student -> student.getNationalId().equals(nationalID));
+
+            if (removed) {
+                System.out.println("\nDelete was Successfully");
+            }
+        } else {
+            System.out.println("\nStudent Not Found");
         }
     }
 
