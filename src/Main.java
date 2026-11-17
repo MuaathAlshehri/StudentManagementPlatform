@@ -48,6 +48,11 @@ public class Main {
                 search(students, nationalID);
                 break;
 
+            case 4:
+                String nationalId = getInput(GET_ID_MESSAGE);
+                update(students, nationalId);
+                break;
+
             default:
                 System.out.println("You didn't choose correct choice , try again");
             }
@@ -120,6 +125,38 @@ public class Main {
                 }
             }
 
+        } else {
+            System.out.println("\nStudent Not found");
+        }
+    }
+
+    public static void update(ArrayList<Student> students, String nationalID) {
+
+        if (checker(nationalID)) {
+
+            for (Student student : students) {
+
+                if (student.getNationalId().equals(nationalID)) {
+
+                    String name = getInput(GET_NAME_MESSAGE);
+
+                    int age = inputAge();
+
+                    double grade = inputGrade();
+
+                    try {
+                        student.setName(name);
+                        student.setAge(age);
+                        student.setGrade(grade);
+                        System.out.println("\nUpdate Done");
+                        break;
+
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
+                    }
+
+                }
+            }
         } else {
             System.out.println("\nStudent Not found");
         }
