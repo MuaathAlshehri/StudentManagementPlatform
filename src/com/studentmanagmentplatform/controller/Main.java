@@ -1,15 +1,23 @@
+package com.studentmanagmentplatform.controller;
 import java.util.ArrayList;
+
 import java.util.HashSet;
 import java.util.Scanner;
-import src.Student;
+
+import com.studentmanagmentplatform.constant.Message;
+import com.studentmanagmentplatform.model.Student;
+import com.studentmanagmentplatform.service.StudentService;
+import com.studentmanagmentplatform.constant.Message ;
+
 
 public class Main {
 
     static Scanner in = new Scanner(System.in);
     static HashSet<String> nationalIDs = new HashSet<>();
 
-    static final String GET_NAME_MESSAGE = "Enter the student name: ";
-    static final String GET_ID_MESSAGE = "Enter the student ID: ";
+    
+    
+    static StudentService studentService = new StudentService();
 
     public static void main(String[] args) {
 
@@ -33,7 +41,11 @@ public class Main {
 
             case 1:
                 Student student = addStudent();
-
+                
+                
+                studentService.addStudent(student , students);
+                
+                
                 if (student != null) {
                     students.add(student);
                 }
@@ -44,17 +56,17 @@ public class Main {
                 break;
 
             case 3:
-                String nationalID = getInput(GET_ID_MESSAGE);
+                String nationalID = getInput(Message.GET_ID_MESSAGE);
                 search(students, nationalID);
                 break;
 
             case 4:
-                String nationalId = getInput(GET_ID_MESSAGE);
+                String nationalId = getInput(Message.GET_ID_MESSAGE);
                 update(students, nationalId);
                 break;
 
             case 5:
-                String nationalid = getInput(GET_ID_MESSAGE);
+                String nationalid = getInput(Message.GET_ID_MESSAGE);
                 delete(students, nationalid);
                 break;
 
@@ -78,8 +90,11 @@ public class Main {
     }
 
     public static Student addStudent() {
+    	
+    	
+    	
 
-        String nationalID = getInput(GET_ID_MESSAGE);
+        String nationalID = getInput(Message.GET_ID_MESSAGE);
 
         try {
             if (checker(nationalID)) {
@@ -90,7 +105,7 @@ public class Main {
             return null;
         }
 
-        String name = getInput(GET_NAME_MESSAGE);
+        String name = getInput(Message.GET_NAME_MESSAGE);
 
         int age = inputAge();
 
@@ -143,7 +158,7 @@ public class Main {
 
                 if (student.getNationalId().equals(nationalID)) {
 
-                    String name = getInput(GET_NAME_MESSAGE);
+                    String name = getInput(Message.GET_NAME_MESSAGE);
 
                     int age = inputAge();
 

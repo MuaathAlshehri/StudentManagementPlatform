@@ -1,4 +1,4 @@
-package src;
+package com.studentmanagmentplatform.model;
 
 public class Student {
 
@@ -41,7 +41,10 @@ public class Student {
     public String getNationalId() {
         return nationalId;
     }
-
+    
+    public double getGrade() {
+    	return this.grade;
+    }
     public String isPassed() {
         if (this.grade >= 60) {
             return "Passed";

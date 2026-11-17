@@ -1,0 +1,19 @@
+
+
+# Java compiled files
+*.class
+
+# Eclipse build output
+/bin/
+
+# Eclipse local settings
+.settings/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+/bin/
+/.settings/
+.classpath
+.project
+
