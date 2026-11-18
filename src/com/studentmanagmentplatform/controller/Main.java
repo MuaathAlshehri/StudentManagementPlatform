@@ -1,21 +1,20 @@
 package com.studentmanagmentplatform.controller;
 
-import com.studentmanagmentplatform.service.Input;
+
 import java.util.ArrayList;
 
-import java.util.HashSet;
 import java.util.Scanner;
 
 import com.studentmanagmentplatform.constant.Message;
 import com.studentmanagmentplatform.model.Student;
 import com.studentmanagmentplatform.service.StudentService;
 import com.studentmanagmentplatform.constant.Message ;
+import com.studentmanagmentplatform.service.Input;
 
 
 public class Main {
 
     static Scanner in = new Scanner(System.in);
-    static HashSet<String> nationalIDs = new HashSet<>();
 
     
     
@@ -29,7 +28,8 @@ public class Main {
 
         while (flag) {
 
-            showMenu();
+            Message.showMenu();
+            
             int input = in.nextInt();
             in.nextLine();
 
@@ -69,44 +69,6 @@ public class Main {
         }
     }
 
-    public static void showMenu() {
-        System.out.println("===== Student Management System =====");
-        System.out.println("1. Add Student");
-        System.out.println("2. Show All Students");
-        System.out.println("3. Search Student");
-        System.out.println("4. Update Student");
-        System.out.println("5. Delete Student");
-        System.out.println("0. Exit");
-        System.out.print("Enter your choice: ");
-    }    
-
 
     
-    
-
-    public static void delete(ArrayList<Student> students, String nationalID) {
-
-        if (checker(nationalID)) {
-
-            nationalIDs.remove(nationalID);
-
-            boolean removed = students.removeIf(student -> student.getNationalId().equals(nationalID));
-
-            if (removed) {
-                System.out.println("\nDelete was Successfully");
-            }
-        } else {
-            System.out.println("\nStudent Not Found");
-        }
-    }
-
-    public static boolean checker(String national_id) {
-        if (nationalIDs.contains(national_id)) {
-            return true;
-        }
-        return false;
-    }
-
-    
-
 }

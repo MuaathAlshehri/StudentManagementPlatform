@@ -33,6 +33,8 @@ public class Student {
     public double getGrade() {
     	return this.grade;
     }
+    
+    
     public String isPassed() {
         if (this.grade >= 60) {
             return "Passed";
