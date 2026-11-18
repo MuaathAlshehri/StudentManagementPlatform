@@ -16,12 +16,10 @@ public class Main {
 
     static Scanner in = new Scanner(System.in);
 
-    
-    
-    static StudentService studentService = new StudentService();
 
     public static void main(String[] args) {
-
+    	
+    	StudentService studentService = new StudentService();
         ArrayList<Student> students = new ArrayList<>();
 
         boolean flag = true;
@@ -50,15 +48,15 @@ public class Main {
                 break;
 
             case 3:
-            	studentService.serach(students, Input.getInput(Message.GET_ID_MESSAGE));
+            	studentService.serach(students);
                 break;
 
             case 4:
-            	studentService.update(students, Input.getInput(Message.GET_ID_MESSAGE));
+            	studentService.update(students);
                 break;
 
             case 5:
-            	studentService.delete(students, Input.getInput(Message.GET_ID_MESSAGE));
+            	studentService.delete(students);
                 break;
 
             default:
@@ -67,8 +65,5 @@ public class Main {
 
             System.out.print("\n\n\n");
         }
-    }
-
-
-    
+    }    
 }

@@ -25,10 +25,10 @@ public class Valdiation {
 		return grade ; 
 	}
 	
-	public static String valName(String name) {
+	public static String valText(String name) {
 		
 		if(name.isBlank()) {
-			throw new IllegalArgumentException("The shouldn't be null or whitespaces");
+			throw new IllegalArgumentException("The text shouldn't be null or whitespaces");
 		}
 		
 		return name ; 

@@ -15,7 +15,7 @@ public class StudentService {
 
 		try {
 			String nationalID = Valdiation.valID(Input.getInput(Message.GET_ID_MESSAGE), students);
-			String name = Valdiation.valName(Input.getInput(Message.GET_NAME_MESSAGE));
+			String name = Valdiation.valText(Input.getInput(Message.GET_NAME_MESSAGE));
 			int age = Valdiation.valAge(Input.readAge());
 			double grade = Valdiation.valGrade(Input.readGrade());
 			
@@ -28,9 +28,9 @@ public class StudentService {
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
-
 	}
 
+	
 	public void showAllStudents(ArrayList<Student> students) {
 		if (students.size() == 0) {
 			System.out.println("\nNo students found!");
@@ -42,75 +42,62 @@ public class StudentService {
 		}
 	}
 
-	public void serach(ArrayList<Student> students , String ID) {
-    	boolean flag = true;
-    	
-    	for(Student student : students) {
-    		if(student.getNationalId().equals(ID)) {
-    			student.show();
-    			flag = false;
-    			break;
-    		}
-    	}
-    	
-    	if(flag) {
-    		 System.out.println("\nStudent Not found");
-    	}
+	public void serach(ArrayList<Student> students) {
+		
+		String nationalID = Valdiation.valText(Input.getInput(Message.GET_ID_MESSAGE));
+		
+		Student st1 = studentDao.serachStudent(nationalID, students);
+		
+		if (st1 != null) {
+		    st1.show();
+		} else {
+		    System.out.println("Student not found!");
+		}
 	}
 	
 
 
-	public void update(ArrayList<Student> students, String ID) {
-		boolean flag = true ;
+	public void update(ArrayList<Student> students) {
+
+		String nationalID = Valdiation.valText(Input.getInput(Message.GET_ID_MESSAGE));
+		Student student = studentDao.serachStudent(nationalID, students);
 		
-		for(Student student : students) {
-			if(student.getNationalId().equals(ID)) {
-				flag = false ;
-				try {
-					
-					String name = Valdiation.valName(Input.getInput(Message.GET_NAME_MESSAGE));
-					int age = Valdiation.valAge(Input.readAge());
-					double grade = Valdiation.valGrade(Input.readGrade());
-					
-					student.setName(name);
-					student.setAge(age);
-					student.setGrade(grade);
-					
-					System.out.println("Update done");
-					break;
-					
-				}catch(IllegalArgumentException e){
-					System.out.println(e.getMessage());
-				}
-				
-			}
-		}
-		
-		if(flag) {
+		if(student == null) {
+			
 			System.out.println("\nStudent Not found");
+			
+		}else {
+			
+			try {
+				String name = Valdiation.valText(Input.getInput(Message.GET_NAME_MESSAGE));
+				int age = Valdiation.valAge(Input.readAge());
+				double grade = Valdiation.valGrade(Input.readGrade());
+				
+				student.setName(name);
+				student.setAge(age);
+				student.setGrade(grade);
+				
+				System.out.println("Update done");
+
+				
+			}catch(IllegalArgumentException e){
+				System.out.println(e.getMessage());
+			}	
 		}
     }
 
 	
-	public void delete(ArrayList<Student> students  , String ID) {
+	public void delete(ArrayList<Student> students) {
 		
-		boolean flag = true ; 
+		String nationalID = Valdiation.valText(Input.getInput(Message.GET_ID_MESSAGE));
+		Student student = studentDao.serachStudent(nationalID, students);
 		
-		for(Student student : students) {
-			
-			if(student.getNationalId().equals(ID)) {
-				studentDao.deleteStudent(student, students);
-				System.out.println("Student deleted successfully.");
-				flag = false ; 
-				break;
-			}
-			
-		}
-		
-		if(flag) {
+		if(student == null) {
 			System.out.println("\nStudent Not found");
+		}else {	
+			studentDao.deleteStudent(student, students);
+			System.out.println("Student deleted successfully.");
 		}
-		
 	}
 
 

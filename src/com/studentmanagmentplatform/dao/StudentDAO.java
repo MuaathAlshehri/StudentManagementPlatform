@@ -17,4 +17,18 @@ public class StudentDAO {
 	}
 	
 	
+	public Student serachStudent(String ID , ArrayList<Student> students) {
+    	
+    	for(Student student : students) {
+    		if(student.getNationalId().equals(ID)) {
+    			return student ;
+    		}
+    	}
+    	
+    	return null ; 
+	}
+	
+
+	
+	
 }
