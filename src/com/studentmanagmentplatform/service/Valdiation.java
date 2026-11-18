@@ -1,5 +1,8 @@
 package com.studentmanagmentplatform.service;
 
+import com.studentmanagmentplatform.model.Student;
+import java.util.ArrayList;
+
 public class Valdiation {
 	
 	public static int valAge(int age) {
@@ -22,12 +25,23 @@ public class Valdiation {
 		return grade ; 
 	}
 	
-	public static String valnameOrID(String nameOrID) {
+	public static String valName(String name) {
 		
-		if(nameOrID.isBlank()) {
+		if(name.isBlank()) {
 			throw new IllegalArgumentException("The shouldn't be null or whitespaces");
 		}
 		
-		return nameOrID ; 
+		return name ; 
+	}
+	
+	
+	public static String valID(String ID , ArrayList<Student> students) {
+		
+		for(Student student : students) {
+			if(student.getNationalId().equals(ID)) {
+				throw new IllegalArgumentException("This ID already exits");
+			}
+		}
+		return ID ; 
 	}
 }

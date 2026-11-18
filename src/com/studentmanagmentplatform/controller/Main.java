@@ -42,15 +42,7 @@ public class Main {
                 break;
 
             case 1:
-                Student student = addStudent();
-                
-                
-                studentService.addStudent(students);
-                
-                
-                if (student != null) {
-                    students.add(student);
-                }
+            	studentService.addStudent(students);
                 break;
 
             case 2:
@@ -91,37 +83,7 @@ public class Main {
         System.out.print("Enter your choice: ");
     }
 
-    public static Student addStudent() {
-    	
-        String nationalID = Input.getInput(Message.GET_ID_MESSAGE);
 
-        try {
-            if (checker(nationalID)) {
-                throw new IllegalArgumentException("\nNational ID already exists!");
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
-
-        String name = Input.getInput(Message.GET_NAME_MESSAGE);
-
-        int age = Input.readAge();
-
-        double grade = Input.readGrade();
-
-        try {
-
-            Student student = new Student(nationalID, name, age, grade);
-            nationalIDs.add(nationalID);
-            return student;
-
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
-    }
-    
     
 
     public static void showAllStudents(ArrayList<Student> students) {

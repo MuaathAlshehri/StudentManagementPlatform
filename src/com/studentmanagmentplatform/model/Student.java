@@ -9,9 +9,9 @@ public class Student {
 
     public Student(String nationalId, String name, int age, double grade) {
         this.nationalId = nationalId;
-        this.setName(name);
-        this.setAge(age);
-        this.setGrade(grade);
+        this.name = name;
+        this.age = age;
+        this.grade = grade;
     }
 
     public void setName(String name) {
