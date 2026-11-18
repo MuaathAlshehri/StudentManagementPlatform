@@ -14,9 +14,6 @@ import com.studentmanagmentplatform.service.Input;
 
 public class Main {
 
-    static Scanner in = new Scanner(System.in);
-
-
     public static void main(String[] args) {
     	
     	StudentService studentService = new StudentService();
@@ -28,14 +25,13 @@ public class Main {
 
             Message.showMenu();
             
-            int input = in.nextInt();
-            in.nextLine();
+            int choice = Input.readChioce();
 
             System.out.print("\n\n\n");
 
-            switch (input) {
+            switch (choice) {
             case 0:
-                System.out.println("Thank you for using my system :)");
+                System.out.println(Message.THANK_MESSAGE);
                 flag = false;
                 break;
 
@@ -60,7 +56,7 @@ public class Main {
                 break;
 
             default:
-                System.out.println("You didn't choose correct choice , try again");
+                System.out.println(Message.WRONG_CHOICE);
             }
 
             System.out.print("\n\n\n");

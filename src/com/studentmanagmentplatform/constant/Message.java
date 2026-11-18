@@ -6,7 +6,7 @@ public class Message {
     public static final String GET_ID_MESSAGE = "Enter the student ID: ";
     
     
-    public static void showMenu() {
+    public static final void showMenu() {
         System.out.println("===== Student Management System =====");
         System.out.println("1. Add Student");
         System.out.println("2. Show All Students");
@@ -14,7 +14,10 @@ public class Message {
         System.out.println("4. Update Student");
         System.out.println("5. Delete Student");
         System.out.println("0. Exit");
-        System.out.print("Enter your choice: ");
     }   
+    
+    public static final String THANK_MESSAGE = "Thank you for using my system :)";
+    
+    public static final String WRONG_CHOICE = "You didn't choose correct choice , try again"; 
     
 }

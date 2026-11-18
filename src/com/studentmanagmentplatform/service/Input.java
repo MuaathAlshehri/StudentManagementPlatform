@@ -37,4 +37,11 @@ public class Input {
 		return grade; 
 	}
 	
+	
+	public static int readChioce() {
+		System.out.print("Enter your choice: ");
+        int choice = scn.nextInt();
+        scn.nextLine();
+        return choice ;
+	}
 }
