@@ -91,6 +91,27 @@ public class StudentService {
 		}
     }
 
+	
+	public void delete(ArrayList<Student> students  , String ID) {
+		
+		boolean flag = true ; 
+		
+		for(Student student : students) {
+			
+			if(student.getNationalId().equals(ID)) {
+				studentDao.deleteStudent(student, students);
+				System.out.println("Student deleted successfully.");
+				flag = false ; 
+				break;
+			}
+			
+		}
+		
+		if(flag) {
+			System.out.println("\nStudent Not found");
+		}
+		
+	}
 
 
 }

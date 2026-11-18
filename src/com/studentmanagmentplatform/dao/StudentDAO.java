@@ -12,7 +12,9 @@ public class StudentDAO {
 		students.add(student);
 	}
 	
-	
+	public void deleteStudent(Student student  , ArrayList<Student> students ) {
+		students.remove(student);
+	}
 	
 	
 }

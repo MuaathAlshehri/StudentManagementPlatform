@@ -58,8 +58,7 @@ public class Main {
                 break;
 
             case 5:
-                String nationalid = Input.getInput(Message.GET_ID_MESSAGE);
-                delete(students, nationalid);
+            	studentService.delete(students, Input.getInput(Message.GET_ID_MESSAGE));
                 break;
 
             default:
