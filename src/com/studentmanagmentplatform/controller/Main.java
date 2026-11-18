@@ -50,13 +50,11 @@ public class Main {
                 break;
 
             case 3:
-                String nationalID = Input.getInput(Message.GET_ID_MESSAGE);
-                search(students, nationalID);
+            	studentService.serach(students, Input.getInput(Message.GET_ID_MESSAGE));
                 break;
 
             case 4:
-                String nationalId = Input.getInput(Message.GET_ID_MESSAGE);
-                update(students, nationalId);
+            	studentService.update(students, Input.getInput(Message.GET_ID_MESSAGE));
                 break;
 
             case 5:
@@ -81,57 +79,9 @@ public class Main {
         System.out.println("5. Delete Student");
         System.out.println("0. Exit");
         System.out.print("Enter your choice: ");
-    }
+    }    
 
 
-    public static void search(ArrayList<Student> students, String nationalID) {
-        if (checker(nationalID)) {
-
-            for (Student student : students) {
-                if (student.getNationalId().equals(nationalID)) {
-                    student.show();
-                    break;
-                }
-            }
-
-        } else {
-            System.out.println("\nStudent Not found");
-        }
-    }
-    
-    
-
-    public static void update(ArrayList<Student> students, String nationalID) {
-
-        if (checker(nationalID)) {
-
-            for (Student student : students) {
-
-                if (student.getNationalId().equals(nationalID)) {
-
-                    String name = Input.getInput(Message.GET_NAME_MESSAGE);
-
-                    int age = Input.readAge();
-
-                    double grade = Input.readGrade();
-
-                    try {
-                        student.setName(name);
-                        student.setAge(age);
-                        student.setGrade(grade);
-                        System.out.println("\nUpdate Done");
-                        break;
-
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e.getMessage());
-                    }
-
-                }
-            }
-        } else {
-            System.out.println("\nStudent Not found");
-        }
-    }
     
     
 
