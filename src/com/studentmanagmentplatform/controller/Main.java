@@ -46,7 +46,7 @@ public class Main {
                 break;
 
             case 2:
-                showAllStudents(students);
+            	studentService.showAllStudents(students);
                 break;
 
             case 3:
@@ -83,22 +83,6 @@ public class Main {
         System.out.print("Enter your choice: ");
     }
 
-
-    
-
-    public static void showAllStudents(ArrayList<Student> students) {
-
-        if (students.size() == 0) {
-            System.out.println("\nNo students found!");
-        } else {
-            students.forEach(student -> {
-                student.show();
-                System.out.println("\n");
-            });
-        }
-    }
-    
-    
 
     public static void search(ArrayList<Student> students, String nationalID) {
         if (checker(nationalID)) {

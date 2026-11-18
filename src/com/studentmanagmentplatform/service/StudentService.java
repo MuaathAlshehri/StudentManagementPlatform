@@ -26,6 +26,18 @@ public class StudentService {
 		}
 		
 	}
+	
+	
+    public  void showAllStudents(ArrayList<Student> students) {
+        if (students.size() == 0) {
+            System.out.println("\nNo students found!");
+        } else {
+            students.forEach(student -> {
+                student.show();
+                System.out.println("\n");
+            });
+        }
+    }
 
 
 }
