@@ -1,18 +1,18 @@
-package com.studentmanagmentplatform.service;
+package com.studentmanagmentplatform.util;
 
 import java.util.Scanner;
 
-public class Input {
+public class InputHandler {
 	
 	private static Scanner scn ;
 	
 	
-	public Input() {
-		this.scn = new Scanner(System.in);
+	public InputHandler() {
+		scn = new Scanner(System.in);
 	}
 	
 	
-    public static  String getInput(String message) {
+    public static  String readString(String message) {
         System.out.println(message);
         String name = scn.nextLine();
 
@@ -29,7 +29,7 @@ public class Input {
 	}
 	
     
-	public static  double readGrade() {
+	public static double readGrade() {
 		System.out.println("Enter student grade: ");
 		double grade = scn.nextDouble();
 		scn.nextLine();

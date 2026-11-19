@@ -1,11 +1,11 @@
-package com.studentmanagmentplatform.service;
+package com.studentmanagmentplatform.util;
 
 import com.studentmanagmentplatform.model.Student;
 import java.util.ArrayList;
 
-public class Valdiation {
+public class InputValidator {
 	
-	public static int valAge(int age) {
+	public static int validateAge(int age) {
 		
 		if(age < 0 || age > 130) {
 			throw new IllegalArgumentException("Age should be more than 0 and less 130");
@@ -16,7 +16,7 @@ public class Valdiation {
 	}
 	
 	
-	public static double valGrade(double grade) {
+	public static double validateGrade(double grade) {
 		
 		if(grade < 0 || grade > 100) {
 			throw new IllegalArgumentException("Grade should br more 0 and less 101");
@@ -25,7 +25,7 @@ public class Valdiation {
 		return grade ; 
 	}
 	
-	public static String valText(String name) {
+	public static String validateString(String name) {
 		
 		if(name.isBlank()) {
 			throw new IllegalArgumentException("The text shouldn't be null or whitespaces");
@@ -35,7 +35,7 @@ public class Valdiation {
 	}
 	
 	
-	public static String valID(String ID , ArrayList<Student> students) {
+	public static String isIdExits(String ID , ArrayList<Student> students) {
 		
 		for(Student student : students) {
 			if(student.getNationalId().equals(ID)) {

@@ -13,6 +13,11 @@ public class Student {
         this.age = age;
         this.grade = grade;
     }
+    
+    
+    public Student() {
+    	
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -32,6 +37,10 @@ public class Student {
     
     public double getGrade() {
     	return this.grade;
+    }
+    
+    public String getName() {
+    	return this.name;
     }
     
     

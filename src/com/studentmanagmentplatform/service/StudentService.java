@@ -3,25 +3,26 @@ package com.studentmanagmentplatform.service;
 import java.util.ArrayList;
 import com.studentmanagmentplatform.dao.StudentDAO;
 import com.studentmanagmentplatform.model.Student;
+import com.studentmanagmentplatform.util.InputHandler;
+import com.studentmanagmentplatform.util.InputValidator;
 import com.studentmanagmentplatform.constant.Message;
-import com.studentmanagmentplatform.service.Valdiation;
 
 public class StudentService {
 
 	StudentDAO studentDao = new StudentDAO();
-	Input in = new Input();
+	InputHandler in = new InputHandler();
 
-	public void addStudent(ArrayList<Student> students) {
+	public void addStudentService(ArrayList<Student> students) {
 
 		try {
-			String nationalID = Valdiation.valID(Input.getInput(Message.GET_ID_MESSAGE), students);
-			String name = Valdiation.valText(Input.getInput(Message.GET_NAME_MESSAGE));
-			int age = Valdiation.valAge(Input.readAge());
-			double grade = Valdiation.valGrade(Input.readGrade());
+			String nationalID = InputValidator.isIdExits(InputHandler.readString(Message.GET_ID_MESSAGE), students);
+			String name = InputValidator.validateString(InputHandler.readString(Message.GET_NAME_MESSAGE));
+			int age = InputValidator.validateAge(InputHandler.readAge());
+			double grade = InputValidator.validateGrade(InputHandler.readGrade());
 			
 			Student student = new Student(nationalID, name, age, grade);
 			
-			studentDao.addStudent(student, students);
+			studentDao.addStudentToArrayList(student, students);
 			
 			System.out.println("Student added successfully.");
 			
@@ -31,7 +32,7 @@ public class StudentService {
 	}
 
 	
-	public void showAllStudents(ArrayList<Student> students) {
+	public void showAllStudentsService(ArrayList<Student> students) {
 		if (students.size() == 0) {
 			System.out.println("\nNo students found!");
 		} else {
@@ -42,11 +43,11 @@ public class StudentService {
 		}
 	}
 
-	public void serach(ArrayList<Student> students) {
+	public void serachService(ArrayList<Student> students) {
 		
-		String nationalID = Valdiation.valText(Input.getInput(Message.GET_ID_MESSAGE));
+		String nationalID = InputValidator.validateString(InputHandler.readString(Message.GET_ID_MESSAGE));
 		
-		Student st1 = studentDao.serachStudent(nationalID, students);
+		Student st1 = studentDao.serachStudentInArrayList(nationalID, students);
 		
 		if (st1 != null) {
 		    st1.show();
@@ -57,10 +58,10 @@ public class StudentService {
 	
 
 
-	public void update(ArrayList<Student> students) {
+	public void updateService(ArrayList<Student> students) {
 
-		String nationalID = Valdiation.valText(Input.getInput(Message.GET_ID_MESSAGE));
-		Student student = studentDao.serachStudent(nationalID, students);
+		String nationalID = InputValidator.validateString(InputHandler.readString(Message.GET_ID_MESSAGE));
+		Student student = studentDao.serachStudentInArrayList(nationalID, students);
 		
 		if(student == null) {
 			
@@ -69,9 +70,9 @@ public class StudentService {
 		}else {
 			
 			try {
-				String name = Valdiation.valText(Input.getInput(Message.GET_NAME_MESSAGE));
-				int age = Valdiation.valAge(Input.readAge());
-				double grade = Valdiation.valGrade(Input.readGrade());
+				String name = InputValidator.validateString(InputHandler.readString(Message.GET_NAME_MESSAGE));
+				int age = InputValidator.validateAge(InputHandler.readAge());
+				double grade = InputValidator.validateGrade(InputHandler.readGrade());
 				
 				student.setName(name);
 				student.setAge(age);
@@ -87,15 +88,15 @@ public class StudentService {
     }
 
 	
-	public void delete(ArrayList<Student> students) {
+	public void deleteService(ArrayList<Student> students) {
 		
-		String nationalID = Valdiation.valText(Input.getInput(Message.GET_ID_MESSAGE));
-		Student student = studentDao.serachStudent(nationalID, students);
+		String nationalID = InputValidator.validateString(InputHandler.readString(Message.GET_ID_MESSAGE));
+		Student student = studentDao.serachStudentInArrayList(nationalID, students);
 		
 		if(student == null) {
 			System.out.println("\nStudent Not found");
 		}else {	
-			studentDao.deleteStudent(student, students);
+			studentDao.deleteStudentToArrayList(student, students); 
 			System.out.println("Student deleted successfully.");
 		}
 	}

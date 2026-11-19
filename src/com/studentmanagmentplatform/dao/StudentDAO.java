@@ -8,16 +8,16 @@ public class StudentDAO {
 	
 	
 	
-	public void addStudent(Student student , ArrayList<Student> students) {
+	public void addStudentToArrayList(Student student , ArrayList<Student> students) {
 		students.add(student);
 	}
 	
-	public void deleteStudent(Student student  , ArrayList<Student> students ) {
+	public void deleteStudentToArrayList(Student student  , ArrayList<Student> students ) {
 		students.remove(student);
 	}
 	
 	
-	public Student serachStudent(String ID , ArrayList<Student> students) {
+	public Student serachStudentInArrayList(String ID , ArrayList<Student> students) {
     	
     	for(Student student : students) {
     		if(student.getNationalId().equals(ID)) {

@@ -18,6 +18,6 @@ public class Message {
     
     public static final String THANK_MESSAGE = "Thank you for using my system :)";
     
-    public static final String WRONG_CHOICE = "You didn't choose correct choice , try again"; 
+    public static final String WRONG_CHOICE_MESSAGE = "You didn't choose correct choice , try again"; 
     
 }

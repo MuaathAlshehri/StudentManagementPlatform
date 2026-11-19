@@ -8,8 +8,8 @@ import java.util.Scanner;
 import com.studentmanagmentplatform.constant.Message;
 import com.studentmanagmentplatform.model.Student;
 import com.studentmanagmentplatform.service.StudentService;
+import com.studentmanagmentplatform.util.InputHandler;
 import com.studentmanagmentplatform.constant.Message ;
-import com.studentmanagmentplatform.service.Input;
 
 
 public class Main {
@@ -25,7 +25,7 @@ public class Main {
 
             Message.showMenu();
             
-            int choice = Input.readChioce();
+            int choice = InputHandler.readChioce();
 
             System.out.print("\n\n\n");
 
@@ -36,27 +36,27 @@ public class Main {
                 break;
 
             case 1:
-            	studentService.addStudent(students);
+            	studentService.addStudentService(students);
                 break;
 
             case 2:
-            	studentService.showAllStudents(students);
+            	studentService.showAllStudentsService(students);
                 break;
 
             case 3:
-            	studentService.serach(students);
+            	studentService.serachService(students);
                 break;
 
             case 4:
-            	studentService.update(students);
+            	studentService.updateService(students);
                 break;
 
             case 5:
-            	studentService.delete(students);
+            	studentService.deleteService(students);
                 break;
 
             default:
-                System.out.println(Message.WRONG_CHOICE);
+                System.out.println(Message.WRONG_CHOICE_MESSAGE);
             }
 
             System.out.print("\n\n\n");
