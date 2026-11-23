@@ -1,6 +1,5 @@
+
 package com.studentmanagmentplatform.controller;
-
-
 
 import com.studentmanagmentplatform.constant.Message;
 import com.studentmanagmentplatform.dao.ArrayListStudentDAO;
@@ -9,58 +8,92 @@ import com.studentmanagmentplatform.dao.StudentDAO;
 import com.studentmanagmentplatform.service.StudentService;
 import com.studentmanagmentplatform.util.InputHandler;
 
-
-
 public class Main {
 
-    public static void main(String[] args) {
-    	
-    	StudentDAO listStudents = new ArrayListStudentDAO();
-    	StudentDAO fileStudents = new FileStudentDAO();
-    	StudentService studentService = new StudentService(fileStudents);
-        
+	public static void main(String[] args) {
 
-        boolean flag = true;
+		System.out.println(Message.MAIN_ENTER);
 
-        while (flag) {
+		try {
 
-            Message.showMenu();
-            
-            int choice = InputHandler.readChioce();
+			StudentDAO listStudents = new ArrayListStudentDAO();
+			StudentDAO fileStudents = new FileStudentDAO();
 
-            System.out.print("\n\n\n");
+			StudentService studentService = new StudentService(fileStudents);
 
-            switch (choice) {
-            case 0:
-                System.out.println(Message.THANK_MESSAGE);
-                flag = false;
-                break;
+			boolean flag = true;
 
-            case 1:
-            	studentService.addStudentService();
-                break;
+			while (flag) {
 
-            case 2:
-            	studentService.showAllStudentsService();
-                break;
+				System.out.println(Message.MENU_DISPLAYED);
 
-            case 3:
-            	studentService.serachService();
-                break;
+				Message.showMenu();
 
-            case 4:
-            	studentService.updateService();
-                break;
+				int choice = InputHandler.readChioce();
 
-            case 5:
-            	studentService.deleteService();
-                break;
+				System.out.println(Message.USER_CHOICE_RECEIVED);
 
-            default:
-                System.out.println(Message.WRONG_CHOICE_MESSAGE);
-            }
+				System.out.print("\n\n\n");
 
-            System.out.print("\n\n\n");
-        }
-    }    
+				switch (choice) {
+
+				case 0:
+
+					System.out.println(Message.MAIN_EXIT_SELECTED);
+
+					System.out.println(Message.THANK_MESSAGE);
+
+					flag = false;
+					break;
+
+				case 1:
+
+					System.out.println(Message.MAIN_ADD_SELECTED);
+
+					studentService.addStudentService();
+					break;
+
+				case 2:
+
+					System.out.println(Message.MAIN_SHOW_SELECTED);
+
+					studentService.showAllStudentsService();
+					break;
+
+				case 3:
+
+					System.out.println(Message.MAIN_SEARCH_SELECTED);
+
+					studentService.serachService();
+					break;
+
+				case 4:
+
+					System.out.println(Message.MAIN_UPDATE_SELECTED);
+
+					studentService.updateService();
+					break;
+
+				case 5:
+
+					System.out.println(Message.MAIN_DELETE_SELECTED);
+
+					studentService.deleteService();
+					break;
+
+				default:
+
+					System.out.println(Message.MAIN_INVALID_CHOICE);
+
+					System.out.println(Message.WRONG_CHOICE_MESSAGE);
+				}
+
+				System.out.print("\n\n\n");
+			}
+
+		} finally {
+
+			System.out.println(Message.MAIN_EXIT);
+		}
+	}
 }
