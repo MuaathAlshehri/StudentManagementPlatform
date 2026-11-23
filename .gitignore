@@ -16,4 +16,4 @@ Thumbs.db
 /.settings/
 .classpath
 .project
-
+*.txt

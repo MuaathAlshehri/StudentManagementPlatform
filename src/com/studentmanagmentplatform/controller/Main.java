@@ -1,23 +1,24 @@
 package com.studentmanagmentplatform.controller;
 
 
-import java.util.ArrayList;
-
-import java.util.Scanner;
 
 import com.studentmanagmentplatform.constant.Message;
-import com.studentmanagmentplatform.model.Student;
+import com.studentmanagmentplatform.dao.ArrayListStudentDAO;
+import com.studentmanagmentplatform.dao.FileStudentDAO;
+import com.studentmanagmentplatform.dao.StudentDAO;
 import com.studentmanagmentplatform.service.StudentService;
 import com.studentmanagmentplatform.util.InputHandler;
-import com.studentmanagmentplatform.constant.Message ;
+
 
 
 public class Main {
 
     public static void main(String[] args) {
     	
-    	StudentService studentService = new StudentService();
-        ArrayList<Student> students = new ArrayList<>();
+    	StudentDAO listStudents = new ArrayListStudentDAO();
+    	StudentDAO fileStudents = new FileStudentDAO();
+    	StudentService studentService = new StudentService(fileStudents);
+        
 
         boolean flag = true;
 
@@ -36,23 +37,23 @@ public class Main {
                 break;
 
             case 1:
-            	studentService.addStudentService(students);
+            	studentService.addStudentService();
                 break;
 
             case 2:
-            	studentService.showAllStudentsService(students);
+            	studentService.showAllStudentsService();
                 break;
 
             case 3:
-            	studentService.serachService(students);
+            	studentService.serachService();
                 break;
 
             case 4:
-            	studentService.updateService(students);
+            	studentService.updateService();
                 break;
 
             case 5:
-            	studentService.deleteService(students);
+            	studentService.deleteService();
                 break;
 
             default:

@@ -1,5 +1,6 @@
 package com.studentmanagmentplatform.util;
 
+import com.studentmanagmentplatform.dao.StudentDAO;
 import com.studentmanagmentplatform.model.Student;
 import java.util.ArrayList;
 
@@ -35,13 +36,10 @@ public class InputValidator {
 	}
 	
 	
-	public static String isIdExits(String ID , ArrayList<Student> students) {
-		
-		for(Student student : students) {
-			if(student.getNationalId().equals(ID)) {
-				throw new IllegalArgumentException("This ID already exits");
-			}
+	public static String isIdExits(String ID , StudentDAO studentDAO) {
+		if(studentDAO.serachStudent(ID) != null) {
+			throw new IllegalArgumentException("This ID already exists");
 		}
-		return ID ; 
+		return ID ;
 	}
 }

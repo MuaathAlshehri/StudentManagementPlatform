@@ -43,6 +43,9 @@ public class Student {
     	return this.name;
     }
     
+    public int getAge() {
+    	return this.age;
+    }
     
     public String isPassed() {
         if (this.grade >= 60) {
